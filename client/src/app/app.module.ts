@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { environment } from 'src/environments/environment';
 import { HeaderComponent } from './components/comman/header/header.component';
 import { ListComponent } from './components/pages/movies/list/list.component';
 import { FormComponent } from './components/pages/movies/form/form.component';
@@ -11,7 +12,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ModalModule } from 'ngx-bootstrap/modal';   
 
 const config: SocketIoConfig = {
-	url: 'http://localhost:3001',
+	url: environment.socketUrl,
 	options: {
 		transports: ['websocket']
 	}
