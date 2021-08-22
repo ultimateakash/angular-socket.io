@@ -1,7 +1,7 @@
 # Socket.IO Implementation with React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-<p align="center"><img src="https://github.com/ultimateakash/react-socket.io/blob/master/client/public/react-socket.io.png"></p>
+<p align="center"><img src="https://github.com/ultimateakash/angular-socket.io/blob/master/client/src/assets/angular-socket.io.png"></p>
 
 ## Available Scripts
 
