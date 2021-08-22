@@ -1,0 +1,48 @@
+<form [formGroup]="moviesForm" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{movie ? 'Edit' : 'Add'}} Movie</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="bsModalRef.hide()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="mb-3">
+            <label for="name" class="form-label">Movie:</label>
+            <input type="text" class="form-control" formControlName="name" id="name" placeholder="Enter movie name">
+            <div *ngIf="moviesFormControl.name.invalid && (moviesFormControl.name.dirty || moviesFormControl.name.touched)" class="text-danger">
+                <div *ngIf="moviesFormControl.name.errors?.required">
+                    Please enter movie name.
+                </div>
+                <div *ngIf="moviesFormControl.name.errors?.maxlength">
+                    Please enter no more than {{moviesFormControl.name.errors?.maxlength.requiredLength}} characters.
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category:</label> 
+            <select class="form-control" id="category" formControlName="category">
+                <option value="">Select Category</option>
+                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+            </select>
+            <div *ngIf="moviesFormControl.category.invalid && (moviesFormControl.category.dirty || moviesFormControl.category.touched)" class="text-danger">
+                <div *ngIf="moviesFormControl.category.errors?.required">
+                    Please select movie category.
+                </div> 
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating:</label>       
+            <select class="form-control" id="category" formControlName="rating">
+                <option value="">Select Rating</option>
+                <option *ngFor="let rating of ratings" [value]="rating">{{rating}}</option>
+            </select>
+            <div *ngIf="moviesFormControl.rating.invalid && (moviesFormControl.rating.dirty || moviesFormControl.rating.touched)" class="text-danger">
+                <div *ngIf="moviesFormControl.rating.errors?.required">
+                    Please select movie rating.
+                </div> 
+            </div> 
+        </div> 
+    </div>
+    <div class="modal-footer">
+        <button type="submit" [disabled]="!moviesForm.valid || submitted" class="btn btn-primary me-2" >Submit</button>
+        <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Close</button>
+    </div>
+</form>

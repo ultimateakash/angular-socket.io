@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="mb-1 mt-1 text-end col-8 offset-2">
+        <button class="btn btn-primary btn-sm" (click)="handleModal()">Add Movie</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-8 offset-2">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let movie of movies">
+                    <th>{{movie.id}}</th>
+                    <td>{{movie.name}}</td>
+                    <td>{{movie.category}}</td>
+                    <td><span class="badge bg-warning text-dark">{{movie.rating}}</span></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm me-2" (click)="handleModal(movie)" rel="edit">Edit</button>
+                        <button class="btn btn-danger btn-sm" (click)="handleDelete(movie)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
