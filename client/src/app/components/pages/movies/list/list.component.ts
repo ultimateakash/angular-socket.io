@@ -10,8 +10,8 @@ import { Movie } from 'src/app/interfaces/movie';
 	styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-	
-	movies: Movie[] = []; 
+
+	movies: Movie[] = [];
 
 	constructor(
 		private socketService: SocketService,
@@ -20,14 +20,16 @@ export class ListComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.socketService.fetchMovies();
-		this.socketService.OnFetchMovies().subscribe((data: any) => this.movies = data)
+		this.socketService.onFetchMovies().subscribe((data: any) => this.movies = data)
 	}
 
-	handleModal(movie?: any) {
+	handleModal(movie?: Movie) {
 		this.modalService.show(FormComponent, { initialState: { movie } });
 	}
 
-	handleDelete(movie: any) {
-		this.socketService.deleteMovie(movie.id);
+	handleDelete(movie: Movie) {
+        if(movie.id) {
+            this.socketService.deleteMovie(movie.id);
+        }
 	}
 }

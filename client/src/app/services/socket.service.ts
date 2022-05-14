@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io'; 
+import { Socket } from 'ngx-socket-io';
 import { Movie } from '../interfaces/movie';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class SocketService {
 	addMovie(movie: Movie) {
 		this.socket.emit('addMovie', movie);
 	}
-	
+
 	updateMovie(movie: Movie) {
 		this.socket.emit('updateMovie', movie);
 	}
@@ -26,7 +26,7 @@ export class SocketService {
 	}
 
 	// listen event
-	OnFetchMovies() {
+	onFetchMovies() {
 		return this.socket.fromEvent('fetchMovies');
 	}
 }

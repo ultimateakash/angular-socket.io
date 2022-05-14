@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { categories } from 'src/app/data';
+import { Movie } from 'src/app/interfaces/movie';
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { SocketService } from 'src/app/services/socket.service';
 	styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-	movie!: any;
+	movie!: Movie;
 	submitted = false;
 	categories!: string[];
 	moviesForm!: FormGroup;
@@ -52,7 +53,7 @@ export class FormComponent implements OnInit {
 	}
 
 	onSubmit() {
-		this.submitted = true; 
+		this.submitted = true;
 		const payload = this.moviesForm.value;
 		if(this.movie && this.movie.id) {
 			payload.id = this.movie.id;
@@ -62,6 +63,6 @@ export class FormComponent implements OnInit {
 		}
 		this.moviesForm.reset();
 		this.submitted = false;
-		this.bsModalRef.hide(); 
+		this.bsModalRef.hide();
 	}
 }
